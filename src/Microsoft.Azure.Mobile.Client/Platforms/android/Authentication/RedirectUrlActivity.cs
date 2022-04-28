@@ -10,7 +10,7 @@ namespace Microsoft.WindowsAzure.MobileServices
     /// Activity class for the callback from the authentication process.
     /// </summary>
     [Activity(Name = "com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity")]
-    public class RedirectUrlActivity : Xamarin.Essentials.WebAuthenticatorCallbackActivity
+    public class RedirectUrlActivity : Microsoft.Maui.Essentials.WebAuthenticatorCallbackActivity
     {
 
     }

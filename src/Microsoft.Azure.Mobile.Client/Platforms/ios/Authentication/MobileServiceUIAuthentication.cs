@@ -6,7 +6,7 @@ using Microsoft.WindowsAzure.MobileServices.Internal;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
+using Microsoft.Maui.Essentials;
 
 namespace Microsoft.WindowsAzure.MobileServices
 {

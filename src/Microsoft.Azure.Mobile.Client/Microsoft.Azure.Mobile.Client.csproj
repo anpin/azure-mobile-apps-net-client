@@ -1,9 +1,9 @@
-<Project Sdk="MSBuild.Sdk.Extras/2.1.2">
+﻿<Project Sdk="MSBuild.Sdk.Extras/3.0.23">
   <Import Project="..\..\build\Microsoft.Azure.Mobile.Client.Build.props" />
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461;monoandroid90;monoandroid10.0;xamarin.ios10</TargetFrameworks>
-    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0</TargetFrameworks>
-    <LangVersion>8.0</LangVersion>
+    <TargetFrameworks>net6.0;net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);net6.0-windows</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
     <PackageTitle>Azure Mobile Client SDK</PackageTitle>
@@ -26,6 +26,7 @@
     <Company>Microsoft</Company>
     <NeutralLanguage>en-US</NeutralLanguage>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <UseMauiEssentials>true</UseMauiEssentials>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,33 +40,33 @@
     <Compile Update="Resources.Designer.cs" DesignTime="true" AutoGen="true" DependentUpon="Resources.resx" />
     <EmbeddedResource Update="Resources.resx" Generator="ResXFileCodeGenerator" LastGenOutput="Resources.Designer.cs" />
   </ItemGroup>
-  <PropertyGroup Condition="$(TargetFramework.StartsWith('monoandroid'))">
+  <PropertyGroup Condition="$(TargetFramework.Contains('-android'))">
     <DefineConstants>$(DefineConstants);PLATFORM_ANDROID</DefineConstants>
   </PropertyGroup>
-  <ItemGroup Condition="$(TargetFramework.StartsWith('monoandroid'))">
+  <ItemGroup Condition="$(TargetFramework.Contains('-android'))">
     <PackageReference Include="PCLCrypto" Version="2.0.147" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <!--<PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />-->
     <Reference Include="System.Runtime.Serialization" />
     <Compile Include="Platforms\android\**\*.cs" />
   </ItemGroup>
-  <PropertyGroup Condition="$(TargetFramework.StartsWith('xamarin.ios'))">
+  <PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
     <DefineConstants>$(DefineConstants);PLATFORM_IOS</DefineConstants>
   </PropertyGroup>
-  <ItemGroup Condition="$(TargetFramework.StartsWith('xamarin.ios'))">
+  <ItemGroup Condition="$(TargetFramework.Contains('-ios')) == 'True' or $(TargetFramework.Contains('-maccatalyst')) == 'True'">
     <PackageReference Include="PCLCrypto" Version="2.0.147" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <!--<PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />-->
     <Reference Include="System.Runtime.Serialization" />
     <Compile Include="Platforms\ios\**\*.cs" />
   </ItemGroup>
-  <PropertyGroup Condition="$(TargetFramework.StartsWith('uap10.0'))">
+  <PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
     <DefineConstants>$(DefineConstants);WINDOWS_UWP;WINDOWS_UAP</DefineConstants>
     <TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
   </PropertyGroup>
-  <ItemGroup Condition="$(TargetFramework.StartsWith('uap10.0'))">
+  <ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
     <Compile Include="Platforms\uwp\**\*.cs" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
     <Compile Include="Platforms\netstandard20\**\*.cs" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">

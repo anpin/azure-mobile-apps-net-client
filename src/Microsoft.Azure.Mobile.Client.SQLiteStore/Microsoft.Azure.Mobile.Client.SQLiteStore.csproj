@@ -1,7 +1,7 @@
-<Project Sdk="MSBuild.Sdk.Extras/2.1.2">
+﻿<Project Sdk="MSBuild.Sdk.Extras/3.0.23">
   <Import Project="..\..\build\Microsoft.Azure.Mobile.Client.Build.props" />
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461;monoandroid90;monoandroid10.0;xamarin.ios10</TargetFrameworks>
+    <TargetFrameworks>net6.0;net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
     <PackageTitle>Azure Mobile SQLiteStore</PackageTitle>
     <Title>Azure Mobile SQLiteStore</Title>
     <Authors>Microsoft</Authors>
@@ -27,7 +27,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Azure.Mobile.Client\Microsoft.Azure.Mobile.Client.csproj" />
-    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.0.4" />
+    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220427180151" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\images\icon.png" PackagePath="icon.png" Pack="True" />

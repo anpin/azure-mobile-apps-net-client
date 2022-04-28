@@ -152,7 +152,7 @@ namespace Microsoft.WindowsAzure.MobileServices
 #pragma warning restore IDE0060 // Remove unused parameter
             UIApplication app, NSUrl url, NSDictionary options)
         {
-            return Xamarin.Essentials.Platform.OpenUrl(app, url, options);
+            return Microsoft.Maui.Essentials.Platform.OpenUrl(app, url, options);
         }
 
         /// <summary>
