@@ -12,7 +12,7 @@ namespace Microsoft.WindowsAzure.MobileServices
     using System.Linq;
     using System.Threading.Tasks;
     using Newtonsoft.Json.Linq;
-    using Windows.Data.Xml.Dom;
+    // using Windows.Data.Xml.Dom;
 
     /// <summary>
     /// Define a class help to create/update/delete notification registrations

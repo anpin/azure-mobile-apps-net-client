@@ -6,7 +6,7 @@ using Microsoft.WindowsAzure.MobileServices.Internal;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.Maui.Essentials;
+using Microsoft.Maui.Authentication;
 
 namespace Microsoft.WindowsAzure.MobileServices
 {

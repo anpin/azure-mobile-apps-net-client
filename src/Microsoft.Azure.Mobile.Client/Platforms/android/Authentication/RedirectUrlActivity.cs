@@ -3,6 +3,7 @@
 // ----------------------------------------------------------------------------
 
 using Android.App;
+using Microsoft.Maui.Authentication;
 
 namespace Microsoft.WindowsAzure.MobileServices
 {
@@ -10,7 +11,7 @@ namespace Microsoft.WindowsAzure.MobileServices
     /// Activity class for the callback from the authentication process.
     /// </summary>
     [Activity(Name = "com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity")]
-    public class RedirectUrlActivity : Microsoft.Maui.Essentials.WebAuthenticatorCallbackActivity
+    public class RedirectUrlActivity : WebAuthenticatorCallbackActivity
     {
 
     }
