@@ -683,14 +683,29 @@ namespace Microsoft.WindowsAzure.MobileServices
         private static HttpMessageHandler GetDefaultHttpClientHandler()
         {
             var handler = new HttpClientHandler();
-            if (handler.SupportsAutomaticDecompression)
+            if (SupportsAutomaticDecompression(handler))
             {
                 handler.AutomaticDecompression = DecompressionMethods.GZip;
             }
 
             return handler;
         }
-
+        /// <summary>
+        /// Workaround for https://github.com/dotnet/runtime/issues/67529
+        /// </summary>
+        /// <param name="handler"></param>
+        /// <returns></returns>
+        private static bool SupportsAutomaticDecompression(HttpClientHandler handler)
+        {
+            try
+            {
+                return handler.SupportsAutomaticDecompression;
+            }
+            catch (PlatformNotSupportedException)
+            {
+                return false;
+            }
+        }
         /// <summary>
         /// Gets the user-agent header to use with all requests.
         /// </summary>

@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.MobileServices
                 CurrentAuthenticator = null;
             };
 
-            var browserLaunched = Windows.System.Launcher.LaunchUriAsync(LoginUri);
+            var browserLaunched = Microsoft.Maui.ApplicationModel.Launcher.OpenAsync(LoginUri);
             return tcs.Task;
         }
     }
